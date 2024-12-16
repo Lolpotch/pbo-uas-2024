@@ -58,6 +58,7 @@ Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
+# Run code below to add default credential for the first time
 # session.add(Login(username='admin', password='password123'))
 # session.commit()
 
