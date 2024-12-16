@@ -1,4 +1,4 @@
-from data import User, Session
+from models.data import User, Session
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import exc
 from werkzeug.security import generate_password_hash, check_password_hash
