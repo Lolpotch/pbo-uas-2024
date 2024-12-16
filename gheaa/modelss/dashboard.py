@@ -5,18 +5,6 @@ from modelss.operasional import Operasional
 
 class Dashboard:
     @staticmethod
-    def login():
-        print("\nSELAMAT DATANG DI SISTEM MANAJEMEN INVENTORI DAN PENJUALAN PT INHUTANI V")
-        while True:
-            username = input("\nUser: ")
-            password = input("Password: ")
-            if username == "admin" and password == "admin":
-                print("Login berhasil!")
-                break
-            else:
-                print("Login gagal! Silakan coba lagi.")
-
-    @staticmethod
     def show_menu():
         while True:
             print("\nDashboard:")
@@ -52,13 +40,13 @@ class Dashboard:
             pilihan = input("Pilih opsi: ")
 
             if pilihan == "1":
-                model.tambah_data()
+                model().tambah_data()
             elif pilihan == "2":
-                model.edit_data()
+                model().edit_data()
             elif pilihan == "3":
-                model.hapus_data()
+                model().hapus_data()
             elif pilihan == "4":
-                model.cari_data()
+                model().cari_data()
             elif pilihan == "5":
                 break
             else:
