@@ -1,8 +1,8 @@
-from login import Login
-from barang import BarangOperations
-from transaksi import TransaksiOperations
-from operasional import OperasionalOperations
-from laporan import LaporanOperations
+from models.login import Login
+from models.barang import BarangOperations
+from models.transaksi import TransaksiOperations
+from models.operasional import OperasionalOperations
+from models.laporan import LaporanOperations
 from datetime import datetime
 
 def main():
