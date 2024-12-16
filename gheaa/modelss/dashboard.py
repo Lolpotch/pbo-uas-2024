@@ -10,7 +10,6 @@ class Dashboard:
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    @staticmethod
     def barang_menu():
         while True:
             print("\nBarang Menu:")
@@ -34,7 +33,6 @@ class Dashboard:
             else:
                 print("Opsi tidak valid. Coba lagi.")
 
-    @staticmethod
     def tambah_barang():
         print("\nTambah Barang:")
         jenis_barang = input("Masukkan jenis barang: ")
@@ -47,7 +45,6 @@ class Dashboard:
                         barang_masuk=barang_masuk, barang_keluar=barang_keluar, tanggal=tanggal)
         barang.TambahData(session)
 
-    @staticmethod
     def edit_barang():
         print("\nEdit Barang:")
         id_barang = int(input("Masukkan ID barang: "))
@@ -62,7 +59,6 @@ class Dashboard:
         else:
             print("Barang tidak ditemukan.")
 
-    @staticmethod
     def hapus_barang():
         print("\nHapus Barang:")
         id_barang = int(input("Masukkan ID barang: "))
@@ -76,7 +72,6 @@ class Dashboard:
         else:
             print("Barang tidak ditemukan.")
 
-    @staticmethod
     def cari_barang():
         print("\nCari Barang:")
         id_barang = int(input("Masukkan ID barang: "))
@@ -87,7 +82,6 @@ class Dashboard:
         else:
             print("Barang tidak ditemukan.")
 
-    @staticmethod
     def main_dashboard():
         while True:
             print("\nDashboard")
