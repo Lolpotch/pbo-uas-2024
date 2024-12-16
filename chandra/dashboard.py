@@ -1,3 +1,4 @@
+from sqlalchemy import Date  # Add this to ensure Date is recognized
 from datetime import datetime
 from database import session
 from barang import Barang
