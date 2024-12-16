@@ -1,4 +1,4 @@
-from data import Data
+from modelss.data import Data
 
 class Laporan(Data):
     def __init__(self, deskripsi):

@@ -1,4 +1,4 @@
-from data import Data
+from modelss.data import Data
 
 class Operasional(Data):
     def __init__(self, biaya_mobil, biaya_supir):

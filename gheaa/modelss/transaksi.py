@@ -1,4 +1,4 @@
-from data import Data
+from modelss.data import Data
 
 class Transaksi(Data):
     def __init__(self, nama_pelanggan, jenis_barang, jumlah, status_bayar):

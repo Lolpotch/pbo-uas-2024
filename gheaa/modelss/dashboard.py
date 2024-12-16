@@ -1,7 +1,7 @@
-from barang import Barang
-from transaksi import Transaksi
-from laporan import Laporan
-from operasional import Operasional
+from modelss.barang import Barang
+from modelss.transaksi import Transaksi
+from modelss.laporan import Laporan
+from modelss.operasional import Operasional
 
 class Dashboard:
     @staticmethod
@@ -52,13 +52,13 @@ class Dashboard:
             pilihan = input("Pilih opsi: ")
 
             if pilihan == "1":
-                model().tambah_data()
+                model.tambah_data()
             elif pilihan == "2":
-                model().edit_data()
+                model.edit_data()
             elif pilihan == "3":
-                model().hapus_data()
+                model.hapus_data()
             elif pilihan == "4":
-                model().cari_data()
+                model.cari_data()
             elif pilihan == "5":
                 break
             else:

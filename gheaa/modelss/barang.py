@@ -1,4 +1,4 @@
-from data import Data
+from modelss.data import Data
 
 class Barang(Data):
     def __init__(self, nama_barang, stok_gudang, harga):
