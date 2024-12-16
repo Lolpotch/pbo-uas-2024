@@ -1,22 +1,23 @@
+from datetime import date
 from modelss.data import Data
 
 class Barang(Data):
-    def __init__(self, nama_barang, stok_gudang, harga):
-        self.nama_barang = nama_barang
+    def __init__(self, id_barang: int, jenis_barang: str, stok_gudang: int, barang_masuk: int, barang_keluar: int, Tanggal: date):
+        self.id_barang = id_barang
+        self.jenis_barang = jenis_barang
         self.stok_gudang = stok_gudang
-        self.harga = harga
+        self.barang_masuk = barang_masuk
+        self.barang_keluar = barang_keluar
+        self.Tanggal = Tanggal
 
-    def tambah_data(self):
-        print(f"Menambahkan Barang: {self.nama_barang}, Stok: {self.stok_gudang}, Harga: {self.harga}")
+    def TambahData(self):
+        print("Barang ditambahkan")
 
-    def edit_data(self, nama_barang, stok_gudang, harga):
-        self.nama_barang = nama_barang
-        self.stok_gudang = stok_gudang
-        self.harga = harga
-        print("Data barang berhasil diperbarui.")
+    def EditData(self):
+        print("Barang diedit")
 
-    def hapus_data(self):
-        print(f"Data barang '{self.nama_barang}' berhasil dihapus.")
+    def HapusData(self):
+        print("Barang dihapus")
 
-    def cari_data(self):
-        print(f"Mencari data barang: {self.nama_barang}")
+    def CariData(self):
+        print("Barang dicari")

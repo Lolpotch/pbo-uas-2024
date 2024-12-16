@@ -1,18 +1,21 @@
+from datetime import date
 from modelss.data import Data
 
 class Laporan(Data):
-    def __init__(self, deskripsi):
+    def __init__(self, id_laporan: int, alamat_kirim: str, deskripsi: str, tanggal: date):
+        self.id_laporan = id_laporan
+        self.alamat_kirim = alamat_kirim
         self.deskripsi = deskripsi
+        self.tanggal = tanggal
 
-    def tambah_data(self):
-        print(f"Menambahkan Laporan: {self.deskripsi}")
+    def TambahData(self):
+        print("Laporan ditambahkan")
 
-    def edit_data(self, deskripsi):
-        self.deskripsi = deskripsi
-        print("Data laporan berhasil diperbarui.")
+    def EditData(self):
+        print("Laporan diedit")
 
-    def hapus_data(self):
-        print(f"Data laporan '{self.deskripsi}' berhasil dihapus.")
+    def HapusData(self):
+        print("Laporan dihapus")
 
-    def cari_data(self):
-        print(f"Mencari laporan: {self.deskripsi}")
+    def CariData(self):
+        print("Laporan dicari")

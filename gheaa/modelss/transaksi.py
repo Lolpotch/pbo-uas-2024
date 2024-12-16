@@ -1,24 +1,23 @@
+from datetime import date
 from modelss.data import Data
 
 class Transaksi(Data):
-    def __init__(self, nama_pelanggan, jenis_barang, jumlah, status_bayar):
+    def __init__(self, id_transaksi: int, tanggal: date, nama_pelanggan: str, jenis_barang: int, jumlah: int, stat_bayar: str):
+        self.id_transaksi = id_transaksi
+        self.tanggal = tanggal
         self.nama_pelanggan = nama_pelanggan
         self.jenis_barang = jenis_barang
         self.jumlah = jumlah
-        self.status_bayar = status_bayar
+        self.stat_bayar = stat_bayar
 
-    def tambah_data(self):
-        print(f"Menambahkan Transaksi: Pelanggan: {self.nama_pelanggan}, Barang: {self.jenis_barang}, Jumlah: {self.jumlah}, Status: {self.status_bayar}")
+    def TambahData(self):
+        print("Transaksi ditambahkan")
 
-    def edit_data(self, nama_pelanggan, jenis_barang, jumlah, status_bayar):
-        self.nama_pelanggan = nama_pelanggan
-        self.jenis_barang = jenis_barang
-        self.jumlah = jumlah
-        self.status_bayar = status_bayar
-        print("Data transaksi berhasil diperbarui.")
+    def EditData(self):
+        print("Transaksi diedit")
 
-    def hapus_data(self):
-        print(f"Data transaksi '{self.nama_pelanggan}' berhasil dihapus.")
+    def HapusData(self):
+        print("Transaksi dihapus")
 
-    def cari_data(self):
-        print(f"Mencari data transaksi pelanggan: {self.nama_pelanggan}")
+    def CariData(self):
+        print("Transaksi dicari")
