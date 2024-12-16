@@ -10,11 +10,11 @@ class Transaksi(Base):
     id_transaksi = Column(Integer, primary_key=True, autoincrement=True)
     tanggal = Column(Date, default=date.today)
     nama_pelanggan = Column(String(255), nullable=False)
-    jenis_barang = Column(Integer, nullable=False)
+    jenis_barang = Column(String(255), nullable=False)
     jumlah = Column(Integer, nullable=False)
     stat_bayar = Column(String(50), nullable=False)
 
-    def __init__(self, tanggal: date, nama_pelanggan: str, jenis_barang: int, jumlah: int, stat_bayar: str):
+    def __init__(self, tanggal: date, nama_pelanggan: str, jenis_barang: str, jumlah: int, stat_bayar: str):
         self.tanggal = tanggal
         self.nama_pelanggan = nama_pelanggan
         self.jenis_barang = jenis_barang
