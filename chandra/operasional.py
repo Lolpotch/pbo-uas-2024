@@ -71,3 +71,19 @@ class Operasional(Base):
         self.session.delete(record)
         self.session.commit()
         print("Data deleted successfully.")
+
+   def search_data(self):
+        search_value = input("Enter the date to search (YYYY-MM-DD): ")
+        try:
+            search_date = datetime.strptime(search_value, "%Y-%m-%d").date()
+            results = self.session.query(Operasional).filter(Operasional.tanggal == search_date).all()
+        except ValueError:
+            print("Invalid date format. Please use YYYY-MM-DD.")
+            return
+        
+        if not results:
+            print("No matching records found.")
+            return
+
+        for row in results:
+            print(" | ".join(f"{key}: {value}" for key, value in row.__dict__.items() if key != '_sa_instance_state'))
