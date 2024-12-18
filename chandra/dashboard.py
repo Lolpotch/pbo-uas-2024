@@ -1,4 +1,4 @@
-from sqlalchemy import Date  # Add this to ensure Date is recognized
+from sqlalchemy.types import Integer, Date
 from datetime import datetime
 from database import session
 from barang import Barang
@@ -25,14 +25,24 @@ class Dashboard:
         data = {}
         for column in model.__table__.columns:
             if column.name != model.__table__.primary_key.columns.keys()[0]:
-                value = input(f"Enter {column.name}: ")
-                if isinstance(column.type, Date):
-                    try:
-                        value = datetime.strptime(value, "%Y-%m-%d").date()
-                    except ValueError:
-                        print("Invalid date format. Please use YYYY-MM-DD.")
-                        return
+                while True:
+                    value = input(f"Enter {column.name}: ")
+                    if isinstance(column.type, Date):
+                        try:
+                            value = datetime.strptime(value, "%Y-%m-%d").date()
+                        except ValueError:
+                            print("Invalid date format. Please use YYYY-MM-DD.")
+                            continue
+                    elif isinstance(column.type, Integer):
+                        try:
+                            value = int(value)
+                        except ValueError:
+                            print("Invalid integer. Please enter a valid integer value.")
+                            continue
+                    # If the input is valid, break out of the loop
+                    break
                 data[column.name] = value
+
         self.session.add(model(**data))
         self.session.commit()
         print("Data added successfully.")
