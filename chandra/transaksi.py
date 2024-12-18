@@ -72,3 +72,18 @@ class Transaksi(Base):
         self.session.delete(record)
         self.session.commit()
         print("Data deleted successfully.")
+
+    def search_data(self):
+        try:
+            search_value = input("Enter the name of the customer to search (nama_pelanggan): ")
+            results = self.session.query(Transaksi).filter(Transaksi.nama_pelanggan.like(f"%{search_value}%")).all()     
+        except ValueError:
+            print("Invalid name of customer.")
+            return
+
+        if not results:
+            print("No matching records found.")
+            return
+        
+        for row in results:
+            print(" | ".join(f"{key}: {value}" for key, value in row.__dict__.items() if key != '_sa_instance_state'))
