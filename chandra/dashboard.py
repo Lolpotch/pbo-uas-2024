@@ -22,30 +22,7 @@ class Dashboard:
 
     def add_data(self, model):
         print(f"--- Add Data to {model.__tablename__.capitalize()} ---")
-        data = {}
-        for column in model.__table__.columns:
-            if column.name != model.__table__.primary_key.columns.keys()[0]:
-                while True:
-                    value = input(f"Enter {column.name}: ")
-                    if isinstance(column.type, Date):
-                        try:
-                            value = datetime.strptime(value, "%Y-%m-%d").date()
-                        except ValueError:
-                            print("Invalid date format. Please use YYYY-MM-DD.")
-                            continue
-                    elif isinstance(column.type, Integer):
-                        try:
-                            value = int(value)
-                        except ValueError:
-                            print("Invalid integer. Please enter a valid integer value.")
-                            continue
-                    # If the input is valid, break out of the loop
-                    break
-                data[column.name] = value
-
-        self.session.add(model(**data))
-        self.session.commit()
-        print("Data added successfully.")
+        model.add_data(self)
 
     def edit_data(self, model):
         print(f"--- Edit Data in {model.__tablename__.capitalize()} ---")
