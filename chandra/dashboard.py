@@ -25,23 +25,17 @@ class Dashboard:
         model.add_data(self)
 
     def edit_data(self, model):
+        print(f"--- Edit Data in {model.__tablename__.capitalize()} ---")
         model.edit_data(self, model)
 
     def delete_data(self, model):
+        print(f"--- Delete Data in {model.__tablename__.capitalize()} ---")
         model.delete_data(self, model)
 
     def search_data(self, model):
         print(f"--- Search Data in {model.__tablename__.capitalize()} ---")
-        search_field = input("Enter the field to search: ")
-        search_value = input("Enter the value to search for: ")
-        results = self.session.query(model).filter(getattr(model, search_field).like(f"%{search_value}%")).all()
-        if not results:
-            print("No matching records found.")
-            return
-
-        for row in results:
-            print(" | ".join(f"{key}: {value}" for key, value in row.__dict__.items() if key != '_sa_instance_state'))
-
+        model.search_data(self)
+        
     def manage_data(self, model):
         while True:
             print(f"\nManage {model.__tablename__.capitalize()}:")
