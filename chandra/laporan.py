@@ -71,7 +71,7 @@ class Laporan(Base):
         self.session.commit()
         print("Data deleted successfully.")
 
-   def search_data(self):
+    def search_data(self):
         search_value = input("Enter the date to search (YYYY-MM-DD): ")
         try:
             search_date = datetime.strptime(search_value, "%Y-%m-%d").date()
