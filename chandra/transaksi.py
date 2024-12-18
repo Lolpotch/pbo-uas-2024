@@ -38,3 +38,37 @@ class Transaksi(Base):
         self.session.add(Transaksi(**data))
         self.session.commit()
         print("Data added successfully.")
+    
+    def edit_data(self, model):
+        print(f"--- Edit Data in {model.__tablename__.capitalize()} ---")
+        id_value = input(f"Enter the ID of the record to edit ({model.__table__.primary_key.columns.keys()[0]}): ")
+        record = self.session.query(model).get(id_value)
+        if not record:
+            print("Record not found.")
+            return
+
+        for column in model.__table__.columns:
+            if column.name != model.__table__.primary_key.columns.keys()[0]:
+                value = input(f"Enter new {column.name} (leave blank to keep current): ")
+                if value:
+                    if isinstance(column.type, Date):
+                        try:
+                            value = datetime.strptime(value, "%Y-%m-%d").date()
+                        except ValueError:
+                            print("Invalid date format. Please use YYYY-MM-DD.")
+                            return
+                    setattr(record, column.name, value)
+        self.session.commit()
+        print("Data updated successfully.")
+    
+    def delete_data(self, model):
+        print(f"--- Delete Data from {model.__tablename__.capitalize()} ---")
+        id_value = input(f"Enter the ID of the record to delete ({model.__table__.primary_key.columns.keys()[0]}): ")
+        record = self.session.query(model).get(id_value)
+        if not record:
+            print("Record not found.")
+            return
+
+        self.session.delete(record)
+        self.session.commit()
+        print("Data deleted successfully.")
