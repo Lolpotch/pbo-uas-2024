@@ -72,3 +72,18 @@ class Barang(Base):
         self.session.delete(record)
         self.session.commit()
         print("Data deleted successfully.")
+
+ def search_data(self):
+        try:
+            search_value = input("Enter the name of the item to search (jenis_barang): ")
+            results = self.session.query(Barang).filter(Barang.jenis_barang.like(f"%{search_value}%")).all()
+        except ValueError:
+            print("Invalid item name.")
+            return
+
+        if not results:
+            print("No matching records found.")
+            return
+        
+        for row in results:
+            print(" | ".join(f"{key}: {value}" for key, value in row.__dict__.items() if key != '_sa_instance_state'))
