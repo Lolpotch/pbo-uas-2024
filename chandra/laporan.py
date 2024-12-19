@@ -73,6 +73,7 @@ class Laporan(Base):
         print("Data deleted successfully.")
 
     def search_data(self):
+        print(f"--- Search Data in {Laporan.__tablename__.capitalize()} ---")
         search_value = input("Enter the date to search (YYYY-MM-DD): ")
         try:
             search_date = datetime.strptime(search_value, "%Y-%m-%d").date()
