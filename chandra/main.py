@@ -2,6 +2,7 @@ from database import engine, Base
 from database import session
 from login import Login, login
 from dashboard import Dashboard
+from custom_dasb import CustomDashboard
 
 # Function to create tables
 def initialize_database():
@@ -20,7 +21,7 @@ def main():
     while not login():
         pass
 
-    dashboard = Dashboard()
+    dashboard = CustomDashboard()
     dashboard.main_menu()
 
 if __name__ == "__main__":
