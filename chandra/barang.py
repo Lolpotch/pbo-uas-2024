@@ -75,6 +75,7 @@ class Barang(Base):
         print("Data deleted successfully.")
 
     def search_data(self):
+        print(f"--- Search Data in {Barang.__tablename__.capitalize()} ---")
         try:
             search_value = input("Enter the name of the item to search (jenis_barang): ")
             results = self.session.query(Barang).filter(Barang.jenis_barang.like(f"%{search_value}%")).all()
