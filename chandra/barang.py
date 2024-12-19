@@ -65,7 +65,7 @@ class Barang(Base):
     def delete_data(self):
         print(f"--- Delete Data from {Barang._tablename_.capitalize()} ---")
         try:
-            id_value = input(f"Enter the column of the record to delete ({Barang._table_.primary_key.columns.keys()[0]}): ")
+            id_value = input(f"Enter the ID of the record to delete ({Barang._table_.primary_key.columns.keys()[0]}): ")
             record = self.session.query(Barang).get(id_value)
             #self.session.query untuk mencari data dlm bentuk id_value dlm model/tabel
             if not record:
@@ -75,7 +75,7 @@ class Barang(Base):
             self.session.commit()
             print("Data deleted successfully.")
         except ValueError as ve:
-            print(ve)
+            print(ve)
 
     def search_data(self):
         print(f"--- Search Data in {Barang.__tablename__.capitalize()} ---")
