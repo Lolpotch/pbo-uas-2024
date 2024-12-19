@@ -40,16 +40,16 @@ class Transaksi(Base):
         self.session.commit()
         print("Data added successfully.")
     
-    def edit_data(self, model):
-        print(f"--- Edit Data in {model.__tablename__.capitalize()} ---")
-        id_value = input(f"Enter the ID of the record to edit ({model.__table__.primary_key.columns.keys()[0]}): ")
-        record = self.session.query(model).get(id_value)
+    def edit_data(self):
+        print(f"--- Edit Data in {Transaksi.__tablename__.capitalize()} ---")
+        id_value = input(f"Enter the ID of the record to edit ({Transaksi.__table__.primary_key.columns.keys()[0]}): ")
+        record = self.session.query(Transaksi).get(id_value)
         if not record:
             print("Record not found.")
             return
 
-        for column in model.__table__.columns:
-            if column.name != model.__table__.primary_key.columns.keys()[0]:
+        for column in Transaksi.__table__.columns:
+            if column.name != Transaksi.__table__.primary_key.columns.keys()[0]:
                 value = input(f"Enter new {column.name} (leave blank to keep current): ")
                 if value:
                     if isinstance(column.type, Date):

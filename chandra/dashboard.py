@@ -20,9 +20,6 @@ class Dashboard:
         for row in data:
             print(" | ".join(f"{key}: {value}" for key, value in row.__dict__.items() if key != '_sa_instance_state'))
 
-    def edit_data(self, model):
-        print(f"--- Edit Data in {model.__tablename__.capitalize()} ---")
-        model.edit_data(self, model)
         
     def manage_data(self, model):
         while True:
@@ -37,7 +34,7 @@ class Dashboard:
             if choice == "1":
                 model.add_data(self)
             elif choice == "2":
-                self.edit_data(model)
+                model.edit_data(self)
             elif choice == "3":
                 model.delete_data(self)
             elif choice == "4":
