@@ -62,17 +62,20 @@ class Transaksi(Base):
         self.session.commit()
         print("Data updated successfully.")
     
-    def delete_data(self, model):
-        print(f"--- Delete Data from {model.__tablename__.capitalize()} ---")
-        id_value = input(f"Enter the ID of the record to delete ({model.__table__.primary_key.columns.keys()[0]}): ")
-        record = self.session.query(model).get(id_value)
-        if not record:
-            print("Record not found.")
-            return
+    def delete_data(self):
+        print(f"--- Delete Data from {Transaksi._tablename_.capitalize()} ---")
+        try:
+            id_value = input(f"Enter the column of the record to delete ({Transaksi._table_.primary_key.columns.keys()[0]}): ")
+            record = self.session.query(Transaksi).get(id_value)
+            #self.session.query untuk mencari data dlm bentuk id_value dlm model/tabel
+            if not record:
+                raise ValueError("Record not found.")
 
-        self.session.delete(record)
-        self.session.commit()
-        print("Data deleted successfully.")
+            self.session.delete(record)
+            self.session.commit()
+            print("Data deleted successfully.")
+        except ValueError as ve:
+            print(ve)
 
     def search_data(self):
         print(f"--- Search Data in {Transaksi.__tablename__.capitalize()} ---")
