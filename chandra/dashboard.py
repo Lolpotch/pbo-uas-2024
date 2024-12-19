@@ -27,10 +27,6 @@ class Dashboard:
     def delete_data(self, model):
         print(f"--- Delete Data in {model.__tablename__.capitalize()} ---")
         model.delete_data(self, model)
-
-    def search_data(self, model):
-        print(f"--- Search Data in {model.__tablename__.capitalize()} ---")
-        model.search_data(self)
         
     def manage_data(self, model):
         while True:
@@ -49,7 +45,7 @@ class Dashboard:
             elif choice == "3":
                 self.delete_data(model)
             elif choice == "4":
-                self.search_data(model)
+                model.search_data(self)
             elif choice == "5":
                 break
             else:
