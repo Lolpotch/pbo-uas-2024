@@ -61,9 +61,9 @@ class Laporan(Base):
         print("Data updated successfully.")
     
     def delete_data(self):
-        print(f"--- Delete Data from {Laporan._tablename_.capitalize()} ---")
+        print(f"--- Delete Data from {Laporan.__tablename__.capitalize()} ---")
         try:
-            id_value = input(f"Enter the ID of the record to edit ({Laporan._table_.primary_key.columns.keys()[0]}): ")
+            id_value = input(f"Enter the ID of the record to edit ({Laporan.__table__.primary_key.columns.keys()[0]}): ")
             record = self.session.query(Laporan).get(id_value)
             #self.session.query untuk mencari data dlm bentuk id_value dlm model/tabel
             if not record:
