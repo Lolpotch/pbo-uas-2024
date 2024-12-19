@@ -64,7 +64,7 @@ class Operasional(Base):
     def delete_data(self):
         print(f"--- Delete Data from {Operasional._tablename_.capitalize()} ---")
         try:
-            id_value = input(f"Enter the column of the record to delete ({Operasional._table_.primary_key.columns.keys()[0]}): ")
+            id_value = input(f"Enter the ID of the record to delete ({Operasional._table_.primary_key.columns.keys()[0]}): ")
             record = self.session.query(Operasional).get(id_value)
             #self.session.query untuk mencari data dlm bentuk id_value dlm model/tabel
             if not record:
@@ -73,8 +73,8 @@ class Operasional(Base):
             self.session.delete(record)
             self.session.commit()
             print("Data deleted successfully.")
-        except ValueError as ve:
-            print(ve)
+        except ValueError as ve:    
+            print(ve)
 
     def search_data(self):
         print(f"--- Search Data in {Operasional.__tablename__.capitalize()} ---")
