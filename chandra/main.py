@@ -2,7 +2,7 @@ from database import engine, Base
 from database import session
 from login import Login, login
 from dashboard import Dashboard
-from custom_dasb import CustomDashboard
+from custom_dashb import CustomDashboard
 
 # Function to create tables
 def initialize_database():
