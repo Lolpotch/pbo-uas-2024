@@ -62,9 +62,9 @@ class Operasional(Base):
         print("Data updated successfully.")
     
     def delete_data(self):
-        print(f"--- Delete Data from {Operasional._tablename_.capitalize()} ---")
+        print(f"--- Delete Data from {Operasional.__tablename__.capitalize()} ---")
         try:
-            id_value = input(f"Enter the ID of the record to delete ({Operasional._table_.primary_key.columns.keys()[0]}): ")
+            id_value = input(f"Enter the ID of the record to delete ({Operasional.__table__.primary_key.columns.keys()[0]}): ")
             record = self.session.query(Operasional).get(id_value)
             #self.session.query untuk mencari data dlm bentuk id_value dlm model/tabel
             if not record:
