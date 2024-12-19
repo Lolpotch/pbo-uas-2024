@@ -75,6 +75,7 @@ class Transaksi(Base):
         print("Data deleted successfully.")
 
     def search_data(self):
+        print(f"--- Search Data in {Transaksi.__tablename__.capitalize()} ---")
         try:
             search_value = input("Enter the name of the customer to search (nama_pelanggan): ")
             results = self.session.query(Transaksi).filter(Transaksi.nama_pelanggan.like(f"%{search_value}%")).all()     
