@@ -14,6 +14,7 @@ class Transaksi(Base):
     stat_bayar = Column(String)
 
     def add_data(self):
+        print(f"--- Add Data to {Transaksi.__tablename__.capitalize()} ---")
         data = {}
         for column in Transaksi.__table__.columns:
             if column.name != Transaksi.__table__.primary_key.columns.keys()[0]:

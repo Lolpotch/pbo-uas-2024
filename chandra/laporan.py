@@ -12,6 +12,7 @@ class Laporan(Base):
     tanggal = Column(Date)
 
     def add_data(self):
+        print(f"--- Add Data to {Laporan.__tablename__.capitalize()} ---")
         data = {}
         for column in Laporan.__table__.columns:
             if column.name != Laporan.__table__.primary_key.columns.keys()[0]:

@@ -13,6 +13,7 @@ class Operasional(Base):
     total_biaya = Column(Integer)
 
     def add_data(self):
+        print(f"--- Add Data to {Operasional.__tablename__.capitalize()} ---")
         data = {}
         for column in Operasional.__table__.columns:
             if column.name != Operasional.__table__.primary_key.columns.keys()[0]:

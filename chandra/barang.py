@@ -14,6 +14,7 @@ class Barang(Base):
     tanggal = Column(Date)
 
     def add_data(self):
+        print(f"--- Add Data to {Barang.__tablename__.capitalize()} ---")
         data = {}
         for column in Barang.__table__.columns:
             if column.name != Barang.__table__.primary_key.columns.keys()[0]:
